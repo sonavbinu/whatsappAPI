@@ -19,22 +19,18 @@ whatsapp.on('ready', () => {
 
 whatsapp.on('message', msg => {
   const text = msg.body.toLowerCase();
+  let response = '';
 
-  if (text.includes('hi') || text.includes('hello')) {
-    msg.reply("Hi! 👋 I'm your bot. How can I help you?");
-  }
+  if (/hi|hello/.test(text))
+    response = "Hi!👋 I'm your bot. How can I help you?";
+  else if (/help/.test(text))
+    response =
+      "'Here are the things I can do:\n Say Hi\n Give info\n General chat';";
+  else if (/info/.test(text))
+    response =
+      'This is a simple WhatsApp auto-reply bot created with Node.js 💚';
 
-  if (text.includes('help')) {
-    msg.reply(
-      'Here are the things I can do:\n1️⃣ Say Hi\n2️⃣ Give info\n3️⃣ General chat'
-    );
-  }
-
-  if (text.includes('info')) {
-    msg.reply(
-      'This is a simple WhatsApp auto-reply bot created with Node.js 💚'
-    );
-  }
+  if (response) msg.reply(response);
 });
 
 whatsapp.initialize();

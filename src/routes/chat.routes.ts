@@ -1,6 +1,6 @@
 // index.ts
 import express from 'express';
-import { whatsapp } from './whatsapp'; // <-- import whatsapp client
+import whatsapp from './whatsapp';
 
 const app = express();
 
