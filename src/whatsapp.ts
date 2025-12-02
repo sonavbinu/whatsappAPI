@@ -4,7 +4,8 @@ import { Client, LocalAuth } from 'whatsapp-web.js';
 const whatsapp = new Client({
   authStrategy: new LocalAuth(),
   puppeteer: {
-    headless: true,
+    headless: false,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   },
 });
 

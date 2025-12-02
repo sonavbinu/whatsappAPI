@@ -1,20 +1,22 @@
 // index.ts
 import express from 'express';
-import whatsapp from './whatsapp';
+import whatsapp from '../whatsapp';
+import { Request, Response } from 'express';
 
 const app = express();
 
 app.use(express.json());
 
 // SEND MESSAGE API
-app.post('/send', async (req, res) => {
+app.post('/send', async (req: Request, res: Response): Promise<void> => {
   const { number, message } = req.body;
 
   if (!number || !message) {
-    return res.json({ success: false, error: 'number and message required' });
+    res.json({ success: false, error: 'number and message required' });
+    return;
   }
 
-  const chatId = number + '@c.us'; // WhatsApp format
+  const chatId = `${number}@c.us`;
 
   try {
     await whatsapp.sendMessage(chatId, message);
