@@ -5,7 +5,13 @@ const whatsapp = new Client({
   authStrategy: new LocalAuth(),
   puppeteer: {
     headless: false,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--disable-software-rasterizer',
+    ],
   },
 });
 

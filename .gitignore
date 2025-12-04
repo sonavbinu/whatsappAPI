@@ -36,6 +36,20 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Node.js dependencies
+node_modules/
+
+# WhatsApp-web.js session/cache
+.wwebjs_auth/
+.wwebjs_cache/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
